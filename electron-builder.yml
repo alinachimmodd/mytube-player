@@ -1,0 +1,51 @@
+appId: com.mytubeplayer.app
+productName: MyTube Player
+copyright: Copyright © 2026 Alin
+
+directories:
+  output: release
+  buildResources: resources
+
+files:
+  - dist/**/*
+  - package.json
+
+extraResources:
+  - from: resources/yt-dlp.exe
+    to: yt-dlp.exe
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: resources/icon.ico
+
+mac:
+  target:
+    - target: dmg
+      arch:
+        - x64
+        - arm64
+  icon: resources/icon.icns
+  category: public.app-category.music
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: resources/icon.ico
+  uninstallerIcon: resources/icon.ico
+  installerHeader: resources/installerHeader.bmp
+  installerSidebar: resources/installerSidebar.bmp
+  installerHeaderIcon: resources/icon.ico
+  license: null
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: MyTube Player
+  uninstallDisplayName: MyTube Player
+
+publish:
+  provider: github
+  owner: alin
+  repo: mytube-player
