@@ -1,45 +1,53 @@
 # MyTube Player
 
-A desktop music player powered by YouTube. Search for any song, build playlists, and enjoy your music with a built-in equalizer — all from a clean, modern interface.
+A desktop music player powered by YouTube. Search for any song, build playlists, and enjoy your music with a built-in equalizer, all from a clean, modern interface.
 
 [![Download](https://img.shields.io/github/v/release/alinachimmodd/mytube-player?label=Download&style=for-the-badge)](https://github.com/alinachimmodd/mytube-player/releases/latest)
 
 ## Features
 
-- **YouTube Search** — Find any song using YouTube Data API v3
-- **Audio Streaming** — High-quality audio via yt-dlp (no video download)
-- **Playlists** — Create, reorder, and manage playlists (persisted locally)
-- **Favorites** — Quick-save songs you love
-- **Playback History** — Automatically tracks what you've listened to
-- **10-Band Equalizer** — With 10 presets (Bass Boost, Rock, Pop, Jazz, Electronic, Classical, and more)
-- **Shuffle & Repeat** — Shuffle, repeat all, or repeat one
-- **Queue Management** — Play next, queue songs from search or playlists
-- **Error Logging** — Detailed logs for troubleshooting playback issues
+- **YouTube Search** - Find any song using YouTube Data API v3
+- **Audio Streaming** - High-quality audio via yt-dlp (no video download)
+- **Playlists** - Create, reorder, and manage playlists (persisted locally)
+- **Favorites** - Quick-save songs you love
+- **Playback History** - Automatically tracks what you've listened to
+- **10-Band Equalizer** - With 10 presets (Bass Boost, Rock, Pop, Jazz, Electronic, Classical, and more)
+- **Shuffle & Repeat** - Shuffle, repeat all, or repeat one
+- **Queue Management** - Play next, queue songs from search or playlists
+- **Error Logging** - Detailed logs for troubleshooting playback issues
 
 ## Download
 
 Grab the latest Windows installer from the [Releases](https://github.com/alinachimmodd/mytube-player/releases/latest) page.
 
-## Setup
+## Setup (takes about 5 minutes)
 
-1. **Install** — Run the installer
-2. **Get a YouTube API Key** — Free from [Google Cloud Console](https://console.cloud.google.com/apis/credentials) (enable "YouTube Data API v3")
-3. **Enter the key** — Open Settings in the app and paste your API key
-4. **Get yt-dlp** — Download [yt-dlp.exe](https://github.com/yt-dlp/yt-dlp/releases/latest) and place it either:
-   - In the app's install directory (next to `MyTube Player.exe`), or
-   - Anywhere on your system PATH
-5. **Play** — Search for a song and click play
+1. **Download the installer** from [Releases](https://github.com/alinachimmodd/mytube-player/releases/latest) and install it
+
+2. **Get a YouTube API key** (free, takes 2 minutes):
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project (call it whatever you want)
+   - Go to **APIs & Services > Library**, search for **YouTube Data API v3** and enable it
+   - Go to **APIs & Services > Credentials**, click **Create Credentials > API Key**
+   - **IMPORTANT: Restrict your key!** Click on your new key, then:
+     - Under **API restrictions**, select **Restrict key** and pick only **YouTube Data API v3**
+     - Under **Application restrictions**, you can set **HTTP referrers** or just leave it on **None** for personal use, but definitely set the API restriction so your key can't be used for anything else if it ever leaks
+   - Copy your key
+
+3. Open **MyTube Player**, go to **Settings**, paste your API key, and save
+
+4. That's it, search for a song and vibe!
 
 ## Tech Stack
 
-- **Electron 34** — Desktop framework
-- **React 19** — UI
-- **TypeScript** — Type safety
-- **Vite 6** — Build tooling
-- **Tailwind CSS** — Styling
-- **Zustand 5** — State management
-- **Web Audio API** — Equalizer (BiquadFilterNode chain)
-- **yt-dlp** — YouTube audio extraction
+- **Electron 34** - Desktop framework
+- **React 19** - UI
+- **TypeScript** - Type safety
+- **Vite 6** - Build tooling
+- **Tailwind CSS** - Styling
+- **Zustand 5** - State management
+- **Web Audio API** - Equalizer (BiquadFilterNode chain)
+- **yt-dlp** - YouTube audio extraction
 
 ## Development
 
