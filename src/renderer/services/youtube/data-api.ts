@@ -154,10 +154,20 @@ export async function getVideoDetails(
 }
 
 /**
- * Decode HTML entities that YouTube API returns in titles
+ * Decode HTML entities that YouTube API returns in titles.
+ * Uses a static map instead of innerHTML to avoid DOM-based injection risks.
  */
 function decodeHtmlEntities(text: string): string {
-  const textarea = document.createElement('textarea');
-  textarea.innerHTML = text;
-  return textarea.value;
+  const entities: Record<string, string> = {
+    '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"',
+    '&#39;': "'", '&apos;': "'", '&#x27;': "'", '&#x2F;': '/',
+    '&#38;': '&', '&#60;': '<', '&#62;': '>',
+  };
+  return text.replace(/&(?:#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (match) => {
+    // Named / hex / decimal entity
+    if (entities[match]) return entities[match];
+    if (match.startsWith('&#x')) return String.fromCharCode(parseInt(match.slice(3, -1), 16));
+    if (match.startsWith('&#')) return String.fromCharCode(parseInt(match.slice(2, -1), 10));
+    return match;
+  });
 }

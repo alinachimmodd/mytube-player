@@ -16,7 +16,7 @@ export function createMainWindow(): BrowserWindow {
       preload: path.join(__dirname, '../preload/index.js'),
       contextIsolation: true,
       nodeIntegration: false,
-      sandbox: false, // Needed for better-sqlite3 IPC
+      sandbox: true,
       webSecurity: true,
     },
   });

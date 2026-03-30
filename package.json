@@ -1,6 +1,6 @@
 {
   "name": "mytube-player",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A desktop music player with audio-reactive visualizations, powered by YouTube",
   "main": "dist/main/index.js",
   "author": "Alin",

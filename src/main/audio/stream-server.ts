@@ -29,9 +29,10 @@ export function startStreamServer(): Promise<number> {
       const url = new URL(req.url || '/', `http://localhost`);
       const videoId = url.pathname.replace('/stream/', '');
 
-      if (!videoId || videoId === '/') {
+      // Validate YouTube video ID format (11 chars, alphanumeric + dash + underscore)
+      if (!videoId || !/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
         res.writeHead(400);
-        res.end('Missing videoId');
+        res.end('Invalid videoId');
         return;
       }
 

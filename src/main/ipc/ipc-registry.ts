@@ -32,8 +32,11 @@ export function registerIpcHandlers(mainWindow: BrowserWindow, streamPort: numbe
   });
 
   // Browser cookies setting for age-restricted content
+  const VALID_BROWSERS = ['', 'chrome', 'firefox', 'edge', 'opera', 'brave', 'vivaldi', 'chromium', 'safari'];
   ipcMain.on(IpcChannels.STREAM_SET_COOKIES_BROWSER, (_event, browser: string) => {
-    setCookiesBrowser(browser);
+    if (VALID_BROWSERS.includes(browser)) {
+      setCookiesBrowser(browser);
+    }
   });
 
   // Prefetch: resolve URL only (fire-and-forget, warms the cache for next songs)
