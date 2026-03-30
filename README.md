@@ -4,6 +4,8 @@ A desktop music player powered by YouTube. Search for any song, build playlists,
 
 [![Download](https://img.shields.io/github/v/release/alinachimmodd/mytube-player?label=Download&style=for-the-badge)](https://github.com/alinachimmodd/mytube-player/releases/latest)
 
+![MyTube Player](resources/screenshot.png)
+
 ## Features
 
 - **YouTube Search** - Find any song using YouTube Data API v3
